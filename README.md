@@ -133,6 +133,7 @@ set -g @claude_args           ''         # extra args appended to the command
 set -g @claude_session_prefix 'claude-'  # tmux session name prefix
 set -g @claude_popup_width     '90%'     # popup width
 set -g @claude_popup_height    '90%'     # popup height
+set -g @claude_popup_status    'on'      # 'off' hides the status bar in the popup
 set -g @claude_fzf_options    ''         # extra options passed to the fzf picker
 set -g @claude_picker_cache   'on'       # paint the picker's first frame from a cache
 set -g @claude_sort           'status'   # picker order: 'status' or 'recent'

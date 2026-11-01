@@ -15,6 +15,7 @@ args="$(get_tmux_option @claude_args '')"
 [ -n "$args" ] && cmd="$cmd $args"
 w="$(get_tmux_option @claude_popup_width '90%')"
 h="$(get_tmux_option @claude_popup_height '90%')"
+status="$(get_tmux_option @claude_popup_status 'on')"
 
 session="${prefix}$(session_hash "$path")"
 
@@ -33,6 +34,9 @@ fi
 
 # Close the popup when Claude exits, even under a global detach-on-destroy off.
 tmux set-option -t "$session" detach-on-destroy on
+
+# Hide the session's status bar inside the popup when asked to.
+[ "$status" = off ] && tmux set-option -t "$session" status off
 
 # Record which window launched it, so the picker can jump back here later.
 [ -n "$window" ] && tmux set-option -t "$session" @claude_origin "$window"
